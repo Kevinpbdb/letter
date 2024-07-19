@@ -1,0 +1,175 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://firebasestorage.googleapis.com/v0/b/piclike-support.appspot.com/o/audio%2F391aadd63bcd4e257e3e0ab452b10559.jpg?alt=media&token=92c9cb04-c636-4240-9356-deae4339ea68');
+    margin: 0;
+    background-size: cover;
+}
+
+.envelope {
+    position: relative;
+    width: 200px;
+    height: 149px;
+    background-color: #f0f0f0;
+    border-radius: 0px;
+    z-index: -2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%); /* Centra el video */
+    object-fit: cover; /* Ajusta el video para cubrir todo el contenedor */
+    z-index: -1; /* Envía el video detrás del contenido del sobre */
+}
+
+.cover,
+.two,
+.one,
+.three {
+    transition: transform 0.5s ease, clip-path 0.5s ease;
+    z-index: 1;
+}
+
+
+.cover {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 74px;
+    background-color: #AF4C5B ;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%); /* Triángulo apuntando hacia arriba */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transform-origin: 50% 100%; /* Punto de origen de la transformación en la base del triángulo */
+    transition: transform 0.5s ease, clip-path 0.5s ease; /* Transición suave */
+}
+
+.open .cover {
+    
+    transform: rotateX(-180deg) ; /* Rotar 180 grados en el eje X */
+}
+
+.two {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #D8557B ;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    border-left: none;
+    border-top-left-radius: 0px;
+}
+
+
+.one {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 200px;
+    height: 50%;
+    background-color: Pink;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    border-top-right-radius: 0px;
+    transform-origin: bottom center; /* Punto de origen de rotación en la base del triángulo */
+    transition: transform 0.5s ease, clip-path 0.5s ease; /* Añadido para la transición suave */
+}
+
+.open .one {
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%); /* Triángulo apuntando hacia arriba */
+    transform: TranslateX(0%) TranslateY(-100%); /* Rotar 180 grados en el eje X */
+}
+
+.three {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: #D8557B ;
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+    border-right: none;
+    border-top-right-radius: 0px;
+}
+
+
+.title {
+	position : absolute;
+	top: 20%;
+	transform: translateY(-100%);
+    font-size: 24px;
+    color: #AF4C5B;
+    margin-bottom: 20px; /* Espacio entre el título y el sobre */
+}
+
+button {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #AF4C5B ;
+    cursor: pointer;
+    background-color : Transparent ;
+    border-radius : 20px;
+   border-color : #AF4C5B ;
+}
+
+
+.open .two {
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+
+.open .three {
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+    transform: translateX(100%) rotateY(-180deg);
+}
+
+
+#hearts-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow : hidden;
+}
+
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff0000; /* Color de los corazones */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+
+@keyframes fly-heart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(2);
+        opacity: 0;
+    }
+}
+
+.show-heart {
+    animation: fly-heart 2s forwards;
+}
